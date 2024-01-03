@@ -1,0 +1,33 @@
+
+*{
+    box-sizing: border-box;
+}
+
+form{
+    width: 50%;
+}
+
+.table-div{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+}
+
+.table-div>div{
+    width: fit-content;
+    flex: 45%;
+}
+
+.submit-btn{
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 800px) {
+    .table-div {
+      display: block;
+    }
+    div{
+        margin: 10px;
+    }
+  }

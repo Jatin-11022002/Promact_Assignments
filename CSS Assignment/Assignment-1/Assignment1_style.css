@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: yellow;
+  display: flex;
+  height: 100vh;
+  color: #80007e;
+  gap: 16px;
+}
+
+/* Styling for Sidebar Column */
+.column1 {
+  width: 25%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.label {
+  background-color: #222;
+  color: #fff;
+  padding: 0px;
+  height: 32px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.label .textbox {
+  width: 85%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: #80007e;
+}
+.label .empty-box {
+  width: 15%;
+}
+
+/* Styling for Content Column */
+.column2 {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  border-bottom: 1px dotted #000;
+  height: fit-content;
+  width: 100%;
+}
+
+.column2 h2 {
+  margin-bottom: 10px;
+}
+
+.column2 p {
+  margin-bottom: 15px;
+}
+
+.container {
+  width: 100%;
+}

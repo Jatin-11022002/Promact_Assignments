@@ -1,0 +1,51 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* common styling for all sections */
+.section1,
+.section2,
+.section3 {
+  width: 100%;
+  height: 300px;
+  margin: 16px auto;
+  overflow-y: hidden;
+  border: 1px solid black;
+}
+
+/* section-1 styling */
+.section1 img {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: fit-content;
+  object-fit: cover;
+}
+
+/* section-2 styling */
+.section2 img {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: fit-content;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.section2 .img-container {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+/* section-3 styling */
+.section3 .img-container {
+  width: 500px;
+  left: 50%;
+  top: 0;
+  position: relative;
+  transform: translateX(-50%);
+  height: 100%;
+}

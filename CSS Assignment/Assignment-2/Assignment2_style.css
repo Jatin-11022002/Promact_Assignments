@@ -66,6 +66,14 @@ body {
   text-align: left;
 }
 
+.bordered-div {
+  transition: transform 0.3s ease;
+}
+
+.bordered-div:hover {
+  transform: scale(1.1);
+}
+
 .orange-border {
   border-color: #ff7f00;
 }

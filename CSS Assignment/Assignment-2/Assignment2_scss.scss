@@ -78,6 +78,14 @@ body {
       border-width: 2px;
       text-align: left;
 
+      .bordered-div {
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
       &.orange-border {
         border-color: $orange-border-color;
       }

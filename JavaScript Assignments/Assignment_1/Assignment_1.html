@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+
+    <!-- CSS External File -->
+    <link rel="stylesheet" href="Assignment_1_style.css" />
+  </head>
+  <body>
+    <!-- Calculator container -->
+    <div class="calculator">
+      <h2>Calculator</h2>
+
+      <!-- Calculator form -->
+      <form id="calculatorForm">
+        <!-- First number input field -->
+        <input
+          type="number"
+          id="num1"
+          placeholder="Enter first number"
+          required
+        />
+
+        <!-- Operator selection dropdown -->
+        <select id="operator" required>
+          <option value="">Select Operator</option>
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="/">/</option>
+          <option value="%">%</option>
+        </select>
+
+        <!-- Second number input field -->
+        <input
+          type="number"
+          id="num2"
+          placeholder="Enter second number"
+          required
+        />
+
+        <!-- Calculate button -->
+        <button type="button" onclick="calculate()">Calculate</button>
+
+        <!-- Reset button -->
+        <button type="button" onclick="resetCalculator()" class="reset">
+          Reset
+        </button>
+
+        <!-- Result field -->
+        <input
+          type="text"
+          id="result"
+          readonly
+          placeholder="Result or Error"
+          style="margin-top: 20px"
+        />
+      </form>
+    </div>
+
+    <!-- JavaScript External File -->
+    <script src="Assignment_1_script.js"></script>
+  </body>
+</html>

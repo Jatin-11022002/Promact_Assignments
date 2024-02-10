@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Management</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="Assignment_2_style.css" />
+  </head>
+  <body>
+    <h1>Employee Management</h1>
+
+    <button class="add-btn" onclick="openAddModal()">
+      <i class="fas fa-solid fa-plus"></i> Add Employee
+    </button>
+
+    <!-- Add Employee Modal -->
+    <div id="addModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeAddModal()">&times;</span>
+        <h2>Add Employee</h2>
+        <form id="addForm">
+          <label for="employeeId">Employee ID:</label>
+          <input type="text" id="employeeId" required /><br />
+          <label for="name">Name:</label>
+          <input type="text" id="name" required /><br />
+          <label for="designation">Designation:</label>
+          <input type="text" id="designation" required /><br />
+          <label for="address">Address:</label>
+          <input type="text" id="address" required /><br />
+          <button type="button" onclick="addEmployee()">Add Employee</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Edit Employee Modal -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeEditModal()">&times;</span>
+        <h2>Edit Employee</h2>
+        <form id="editForm">
+          <label for="editEmployeeId">Employee ID:</label>
+          <input type="text" id="editEmployeeId" required /><br />
+          <label for="editName">Name:</label>
+          <input type="text" id="editName" required /><br />
+          <label for="editDesignation">Designation:</label>
+          <input type="text" id="editDesignation" required /><br />
+          <label for="editAddress">Address:</label>
+          <input type="text" id="editAddress" required /><br />
+          <button type="button" onclick="editEmployee()">Save Changes</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Employee Table -->
+    <div class="tableContainer">
+      <h2 id="employeeTablePlaceholder">No Records to Display</h2>
+      <table id="employeeTable">
+        <thead>
+          <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Address</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="employeeList"></tbody>
+      </table>
+    </div>
+
+    <script src="Assignment_2_script.js"></script>
+  </body>
+</html>

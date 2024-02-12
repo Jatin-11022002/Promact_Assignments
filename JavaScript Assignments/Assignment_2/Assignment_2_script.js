@@ -13,40 +13,51 @@ let editIndex = -1; // Index of the employee being edited, initially set to -1
 
 // Function to open the add employee modal
 function openAddModal() {
-  document.getElementById("addModal").style.display = "block";
+  document.getElementById("addModal").style.display = "block"; // Display add modal
 }
 
 // Function to close the add employee modal
 function closeAddModal() {
-  document.getElementById("addModal").style.display = "none";
+  document.getElementById("addModal").style.display = "none"; // Hide add modal
 }
 
 // Function to open the edit employee modal and populate fields with employee data
 function openEditModal(index) {
-  editIndex = index;
-  const employee = employees[index];
+  editIndex = index; // Set editIndex to the index of the employee being edited
+  const employee = employees[index]; // Get the employee object from the array
+  // Populate form fields with employee data
   document.getElementById("editName").value = employee.name;
   document.getElementById("editAddress").value = employee.address;
   document.getElementById("editEmployeeId").value = employee.employeeId;
   document.getElementById("editDesignation").value = employee.designation;
-  document.getElementById("editModal").style.display = "block";
+  document.getElementById("editModal").style.display = "block"; // Display edit modal
 }
 
 // Function to close the edit employee modal
 function closeEditModal() {
-  editIndex = -1;
-  document.getElementById("editModal").style.display = "none";
+  editIndex = -1; // Reset editIndex
+  document.getElementById("editModal").style.display = "none"; // Hide edit modal
 }
 
 // Function to add a new employee
 function addEmployee() {
-  const name = document.getElementById("name").value.trim();
+  const name = document.getElementById("name").value.trim(); // Get input value and trim whitespace
   const address = document.getElementById("address").value.trim();
   const employeeId = document.getElementById("employeeId").value.trim();
   const designation = document.getElementById("designation").value.trim();
 
   // Check if any field is empty
-    
+  if (
+    name === "" ||
+    address === "" ||
+    employeeId === "" ||
+    designation === ""
+  ) {
+    // Show error modal if any field is empty
+    showErrorModal("Please fill out all fields.");
+    return;
+  }
+
   // Create a new employee instance and add it to the employees array
   const employee = new Employee(name, address, employeeId, designation);
   employees.push(employee);
@@ -57,7 +68,7 @@ function addEmployee() {
 
 // Function to edit an existing employee
 function editEmployee() {
-  const name = document.getElementById("editName").value.trim();
+  const name = document.getElementById("editName").value.trim(); // Get input value and trim whitespace
   const address = document.getElementById("editAddress").value.trim();
   const employeeId = document.getElementById("editEmployeeId").value.trim();
   const designation = document.getElementById("editDesignation").value.trim();
@@ -69,7 +80,8 @@ function editEmployee() {
     employeeId === "" ||
     designation === ""
   ) {
-    alert("Please fill out all fields.");
+    // Show error modal if any field is empty
+    showErrorModal("Please fill out all fields.");
     return;
   }
 
@@ -93,8 +105,8 @@ function deleteEmployee(index) {
 // Function to display all employees in the table
 function displayEmployees() {
   if (employees.length > 0) {
-    document.getElementById("employeeTable").style.display = "table";
-    document.getElementById("employeeTablePlaceholder").style.display = "none";
+    document.getElementById("employeeTable").style.display = "table"; // Display the table
+    document.getElementById("employeeTablePlaceholder").style.display = "none"; // Hide placeholder message
     const tableBody = document.getElementById("employeeList");
     tableBody.innerHTML = ""; // Clear existing table rows
 
@@ -118,8 +130,8 @@ function displayEmployees() {
       actionsCell.appendChild(deleteIcon);
     });
   } else {
-    document.getElementById("employeeTable").style.display = "none";
-    document.getElementById("employeeTablePlaceholder").style.display = "block";
+    document.getElementById("employeeTable").style.display = "none"; // Hide the table
+    document.getElementById("employeeTablePlaceholder").style.display = "block"; // Show placeholder message
   }
 }
 
@@ -150,3 +162,17 @@ window.onclick = function (event) {
     closeEditModal();
   }
 };
+
+// Function to display error modal with given message
+function showErrorModal(message) {
+  const errorModal = document.getElementById("errorModal");
+  const errorMessage = document.getElementById("errorMessage");
+  errorMessage.textContent = message; // Set error message text
+  errorModal.style.display = "block"; // Display error modal
+}
+
+// Function to close error modal
+function closeErrorModal() {
+  const errorModal = document.getElementById("errorModal");
+  errorModal.style.display = "none"; // Hide error modal
+}

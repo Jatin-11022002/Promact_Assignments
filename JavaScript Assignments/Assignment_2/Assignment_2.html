@@ -4,15 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Management</title>
+    <!-- Include Font Awesome for icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+    <!-- Include custom CSS styles -->
     <link rel="stylesheet" href="Assignment_2_style.css" />
   </head>
   <body>
     <h1>Employee Management</h1>
 
+    <!-- Button to add new employee -->
     <button class="add-btn" onclick="openAddModal()">
       <i class="fas fa-solid fa-plus"></i> Add Employee
     </button>
@@ -20,8 +23,10 @@
     <!-- Add Employee Modal -->
     <div id="addModal" class="modal">
       <div class="modal-content">
+        <!-- Close button for the modal -->
         <span class="close" onclick="closeAddModal()">&times;</span>
         <h2>Add Employee</h2>
+        <!-- Form to add new employee -->
         <form id="addForm">
           <label for="employeeId">Employee ID:</label>
           <input type="text" id="employeeId" required /><br />
@@ -31,6 +36,7 @@
           <input type="text" id="designation" required /><br />
           <label for="address">Address:</label>
           <input type="text" id="address" required /><br />
+          <!-- Button to submit the form and add employee -->
           <button type="button" onclick="addEmployee()">Add Employee</button>
         </form>
       </div>
@@ -39,19 +45,33 @@
     <!-- Edit Employee Modal -->
     <div id="editModal" class="modal">
       <div class="modal-content">
+        <!-- Close button for the modal -->
         <span class="close" onclick="closeEditModal()">&times;</span>
         <h2>Edit Employee</h2>
+        <!-- Form to edit existing employee -->
         <form id="editForm">
           <label for="editEmployeeId">Employee ID:</label>
-          <input type="text" id="editEmployeeId" required /><br />
+          <input type="text" id="editEmployeeId" required readonly /><br />
           <label for="editName">Name:</label>
           <input type="text" id="editName" required /><br />
           <label for="editDesignation">Designation:</label>
           <input type="text" id="editDesignation" required /><br />
           <label for="editAddress">Address:</label>
           <input type="text" id="editAddress" required /><br />
+          <!-- Button to submit the form and save changes -->
           <button type="button" onclick="editEmployee()">Save Changes</button>
         </form>
+      </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal">
+      <div class="modal-content error">
+        <!-- Close button for the modal -->
+        <span class="close" onclick="closeErrorModal()">&times;</span>
+        <!-- Error message -->
+        <h2>Error</h2>
+        <p id="errorMessage"></p>
       </div>
     </div>
 
@@ -60,6 +80,7 @@
       <h2 id="employeeTablePlaceholder">No Records to Display</h2>
       <table id="employeeTable">
         <thead>
+          <!-- Table header -->
           <tr>
             <th>Employee ID</th>
             <th>Name</th>
@@ -68,10 +89,12 @@
             <th>Actions</th>
           </tr>
         </thead>
+        <!-- Table body to display employee list -->
         <tbody id="employeeList"></tbody>
       </table>
     </div>
 
+    <!-- Include custom JavaScript -->
     <script src="Assignment_2_script.js"></script>
   </body>
 </html>

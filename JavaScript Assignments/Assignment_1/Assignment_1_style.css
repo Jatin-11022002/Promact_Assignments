@@ -1,88 +1,99 @@
-
+/* Global styles */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f9f9f9;
+  font-family: Arial, sans-serif; /* Set font family */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Horizontally center content */
+  align-items: center; /* Vertically center content */
+  height: 100vh; /* Set height to full viewport height */
+  background-color: #f9f9f9; /* Set background color */
 }
 
+/* Calculator container */
 .calculator {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  width: 350px;
-  text-align: center;
+  background-color: #fff; /* Set background color */
+  padding: 20px; /* Add padding */
+  border-radius: 10px; /* Add border radius for rounded corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  width: 350px; /* Set fixed width */
+  text-align: center; /* Center align text */
 }
 
+/* Calculator title */
 .calculator h2 {
-  margin-bottom: 20px;
-  color: #333;
+  margin-bottom: 20px; /* Add margin bottom */
+  color: #333; /* Set text color */
 }
 
+/* Form styles */
 .calculator form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 95%;
-  margin: 0 auto;
-  gap: 6px;
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack form items vertically */
+  align-items: center; /* Center align form items */
+  width: 95%; /* Set width to 95% */
+  margin: 0 auto; /* Center align form */
+  gap: 6px; /* Add gap between form items */
 }
 
+/* Input, select, and button styles */
 .calculator input[type="number"],
 .calculator select,
 .calculator button,
 .calculator input[type="text"] {
-  margin: 5px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
-  width: 100%; 
-  box-sizing: border-box;
+  margin: 5px; /* Add margin */
+  padding: 12px; /* Add padding */
+  border: 1px solid #ccc; /* Add border */
+  border-radius: 6px; /* Add border radius */
+  font-size: 16px; /* Set font size */
+  width: 100%; /* Set width to 100% */
+  box-sizing: border-box; /* Include padding and border in width */
 }
 
+/* Select option styles */
 .calculator select option {
-  font-size: 16px;
+  font-size: 16px; /* Set font size */
 }
 
+/* Button styles */
 .calculator button {
-  cursor: pointer;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  transition: background-color 0.3s;
-  font-size: 16px;
-  font-weight: bold;
+  cursor: pointer; /* Set cursor to pointer */
+  background-color: #007bff; /* Set background color */
+  color: #fff; /* Set text color */
+  border: none; /* Remove border */
+  border-radius: 6px; /* Add border radius */
+  transition: background-color 0.3s; /* Add transition */
+  font-size: 16px; /* Set font size */
+  font-weight: bold; /* Set font weight */
 }
 
+/* Hover effect for buttons */
 .calculator button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Change background color on hover */
 }
 
+/* Result display */
 .calculator #result {
-  margin-top: 20px;
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  width: 100%; 
-  box-sizing: border-box;
+  margin-top: 20px; /* Add margin top */
+  padding: 12px; /* Add padding */
+  font-size: 16px; /* Set font size */
+  border: 1px solid #ccc; /* Add border */
+  border-radius: 6px; /* Add border radius */
+  width: 100%; /* Set width to 100% */
+  box-sizing: border-box; /* Include padding and border in width */
 }
 
+/* Error styling for result */
 .calculator #result.error {
-  border-color: #ff0000;
+  border-color: #ff0000; /* Change border color for error */
 }
 
+/* Reset button styles */
 .calculator button.reset {
-  background-color: #dc3545;
+  background-color: #dc3545; /* Set background color */
 }
 
+/* Hover effect for reset button */
 .calculator button.reset:hover {
-  background-color: #c82333;
+  background-color: #c82333; /* Change background color on hover */
 }

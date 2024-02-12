@@ -31,6 +31,7 @@ function modulo(num1, num2) {
 
 // Function to calculate result based on user input
 function calculate() {
+  // Get input elements and result element
   var num1Input = document.getElementById("num1");
   var num2Input = document.getElementById("num2");
   var operator = document.getElementById("operator").value;
@@ -38,6 +39,7 @@ function calculate() {
 
   // Check if inputs are valid and operator is selected
   if (num1Input.validity.valid && num2Input.validity.valid && operator !== "") {
+    // Parse input values to floats
     var num1 = parseFloat(num1Input.value);
     var num2 = parseFloat(num2Input.value);
 
@@ -81,6 +83,7 @@ function calculate() {
 
 // Function to reset the calculator form
 function resetCalculator() {
+  // Reset form and result element
   document.getElementById("calculatorForm").reset();
   document.getElementById("result").value = "";
   document.getElementById("result").classList.remove("error");

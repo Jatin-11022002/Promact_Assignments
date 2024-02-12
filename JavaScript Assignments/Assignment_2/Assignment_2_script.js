@@ -58,6 +58,15 @@ function addEmployee() {
     return;
   }
 
+  // Check if the employee ID already exists
+  const idExists = employees.some(
+    (employee) => employee.employeeId === employeeId
+  );
+  if (idExists) {
+    showErrorModal("Employee ID already exists.");
+    return;
+  }
+
   // Create a new employee instance and add it to the employees array
   const employee = new Employee(name, address, employeeId, designation);
   employees.push(employee);

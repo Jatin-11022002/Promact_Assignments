@@ -5,8 +5,8 @@ import "../styling/modal.css";
 const Modal = ({ message, closeModal }) => {
   return (
     <>
-      <div className="modal">
-        <div className="modal-container">
+      <div className="modal" onClick={closeModal}>
+        <div className="modal-container" onClick={(e) => e.stopPropagation()}>
           <span className="close" onClick={closeModal}>
             &times;
           </span>

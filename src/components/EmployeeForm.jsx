@@ -28,6 +28,11 @@ const EmployeeForm = () => {
     setFullName(value);
   }, []);
 
+  const handleExperienceChange = useCallback((e) => {
+    const value = e.target.value.replace(/[^0-9]/g, "");
+    setExperience(value);
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!employeeId) {
@@ -101,7 +106,7 @@ const EmployeeForm = () => {
             value={birthdate}
             onChange={(e) => setBirthdate(e.target.value)}
             className="form-input"
-            max={new Date().toISOString().split('T')[0]}
+            max={new Date().toISOString().split("T")[0]}
             required
           />
         </div>
@@ -123,10 +128,10 @@ const EmployeeForm = () => {
             Experience (in years):
           </label>
           <input
-            type="number"
+            type="text"
             id="experience"
             value={experience}
-            onChange={(e) => setExperience(e.target.value)}
+            onChange={handleExperienceChange}
             className="form-input"
             required
           />

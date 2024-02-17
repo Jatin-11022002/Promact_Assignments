@@ -49,7 +49,7 @@ const EmployeeForm = () => {
     }
   };
 
-  //For prefilling
+  //For prefilling data in case of Editing record
   useEffect(() => {
     if (employeeId) {
       let employeeData = records.find((employee) => employee.id === employeeId);
@@ -64,13 +64,13 @@ const EmployeeForm = () => {
     }
   }, [employeeId]);
 
-  //Message's
+  //updating value of message after closing modal
   useEffect(() => {
     if (showModal) return;
     setMessage("");
   }, [showModal]);
 
-  //Modal's
+  //show modal with the message value
   useEffect(() => {
     if (!message) return;
     setShowModal(true);

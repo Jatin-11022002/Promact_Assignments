@@ -2,11 +2,7 @@
 import React, { useState } from "react";
 import "../styling/modal.css";
 
-const Modal = ({ message, setShowModal }) => {
-  const closeModal = () => {
-    setShowModal(false);
-  };
-
+const Modal = ({ message, closeModal }) => {
   return (
     <>
       <div className="modal">

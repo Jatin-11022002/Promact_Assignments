@@ -12,7 +12,6 @@ const EmployeeForm = () => {
   const [department, setDepartment] = useState("");
   const [experience, setExperience] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [message, setMessage] = useState("");
   const { id: employeeId } = useParams();
   const records = useSelector((state) => state.records);
 
@@ -33,7 +32,6 @@ const EmployeeForm = () => {
     e.preventDefault();
     if (!employeeId) {
       dispatch(addEmployee({ fullName, birthdate, department, experience }));
-      setMessage("Record Added Successfully");
       resetInputFields();
     } else {
       dispatch(
@@ -45,8 +43,8 @@ const EmployeeForm = () => {
           experience,
         })
       );
-      setMessage("Record Updated Successfully");
     }
+    setShowModal(true);
   };
 
   //For prefilling data in case of Editing record
@@ -64,22 +62,17 @@ const EmployeeForm = () => {
     }
   }, [employeeId]);
 
-  //updating value of message after closing modal
-  useEffect(() => {
-    if (showModal) return;
-    setMessage("");
-  }, [showModal]);
-
-  //show modal with the message value
-  useEffect(() => {
-    if (!message) return;
-    setShowModal(true);
-  }, [message]);
-
   return (
     <div className="form-container">
-      {showModal === true && (
-        <Modal message={message} setShowModal={setShowModal} />
+      {showModal && (
+        <Modal
+          message={
+            employeeId
+              ? "Record Updated Successfully"
+              : "Record Added Successfully"
+          }
+          closeModal={() => setShowModal(false)}
+        />
       )}
       <h1 className="form-heading">
         {employeeId ? "Edit Employee" : "Add Employee"}

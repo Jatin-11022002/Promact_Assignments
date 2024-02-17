@@ -138,7 +138,7 @@ const EmployeeForm = () => {
           />
         </div>
         <button type="submit" className="form-submit">
-          {employeeId ? "Save Changes" : "Add Employee"}
+          {employeeId ? "Save Changes" : "Insert Record"}
         </button>
       </form>
     </div>

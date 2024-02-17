@@ -4,36 +4,25 @@ import { addEmployee, updateEmployee } from "../store/employeeSlice";
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import "../styling/employeeForm.css";
+import Modal from "./Modal";
 
 const EmployeeForm = () => {
   const [fullName, setFullName] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [department, setDepartment] = useState("");
   const [experience, setExperience] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [message, setMessage] = useState("");
   const { id: employeeId } = useParams();
   const records = useSelector((state) => state.records);
 
+  const dispatch = useDispatch();
   const resetInputFields = () => {
     setFullName("");
     setBirthdate("");
     setDepartment("");
     setExperience("");
   };
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (employeeId) {
-      let employeeData = records.find((employee) => employee.id === employeeId);
-      if (employeeData) {
-        setFullName(employeeData.fullName || "");
-        setBirthdate(employeeData.birthdate || "");
-        setDepartment(employeeData.department || "");
-        setExperience(employeeData.experience || "");
-      }
-    } else {
-      resetInputFields();
-    }
-  }, [employeeId, records]);
 
   const handleFullNameChange = useCallback((e) => {
     const value = e.target.value.replace(/[^A-Za-z\s]/gi, "");
@@ -44,6 +33,7 @@ const EmployeeForm = () => {
     e.preventDefault();
     if (!employeeId) {
       dispatch(addEmployee({ fullName, birthdate, department, experience }));
+      setMessage("Record Added Successfully");
       resetInputFields();
     } else {
       dispatch(
@@ -55,11 +45,42 @@ const EmployeeForm = () => {
           experience,
         })
       );
+      setMessage("Record Updated Successfully");
     }
   };
 
+  //For prefilling
+  useEffect(() => {
+    if (employeeId) {
+      let employeeData = records.find((employee) => employee.id === employeeId);
+      if (employeeData) {
+        setFullName(employeeData.fullName);
+        setBirthdate(employeeData.birthdate);
+        setDepartment(employeeData.department);
+        setExperience(employeeData.experience);
+      }
+    } else {
+      resetInputFields();
+    }
+  }, [employeeId]);
+
+  //Message's
+  useEffect(() => {
+    if (showModal) return;
+    setMessage("");
+  }, [showModal]);
+
+  //Modal's
+  useEffect(() => {
+    if (!message) return;
+    setShowModal(true);
+  }, [message]);
+
   return (
     <div className="form-container">
+      {showModal === true && (
+        <Modal message={message} setShowModal={setShowModal} />
+      )}
       <h1 className="form-heading">
         {employeeId ? "Edit Employee" : "Add Employee"}
       </h1>

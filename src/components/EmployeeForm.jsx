@@ -101,6 +101,7 @@ const EmployeeForm = () => {
             value={birthdate}
             onChange={(e) => setBirthdate(e.target.value)}
             className="form-input"
+            max={new Date().toISOString().split('T')[0]}
             required
           />
         </div>

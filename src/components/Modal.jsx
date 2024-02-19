@@ -6,7 +6,7 @@ const Modal = ({ message, closeModal }) => {
   return (
     <>
       <div className="modal" onClick={closeModal}>
-        <div className="modal-container" onClick={(e)=>e.stopPropagation()}>
+        <div className="modal-container" onClick={(e) => e.stopPropagation()}>
           <span className="close" onClick={closeModal}>
             &times;
           </span>

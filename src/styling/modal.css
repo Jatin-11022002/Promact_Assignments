@@ -1,4 +1,4 @@
-/* Modal Styles */
+
 .modal {
   /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -11,6 +11,7 @@
   background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
 }
 
+
 /* Modal Content */
 .modal-container {
   background-color: #85c994;
@@ -21,6 +22,7 @@
   max-width: 400px; /* Max width of modal */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease; /* Fade animation */
 }
 
 .modal-content {

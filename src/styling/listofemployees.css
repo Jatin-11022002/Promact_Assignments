@@ -28,7 +28,7 @@ table thead tr {
 
 .records-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: seperate;
   border-radius: 10px;
   overflow: auto;
 }
@@ -50,7 +50,14 @@ table thead tr {
   color: #fff;
 }
 
-.edit-button {
+.actions-cell {
+  display: flex;
+  gap: 10px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.action-icon {
   padding: 8px 16px;
   background: transparent;
   color: #fff;
@@ -58,10 +65,9 @@ table thead tr {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
-  width: 100%;
 }
 
-.edit-button:hover {
+.action-icon:hover {
   background: linear-gradient(#202f4b, #3b5572);
 }
 

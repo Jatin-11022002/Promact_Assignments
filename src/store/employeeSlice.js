@@ -110,6 +110,114 @@ const initialState = {
   ],
 };
 
+// arr=[
+//   {
+//     id: "fjhE22qbzjXvGkdLQWHCS",
+//     fullName: "raj",
+//     birthdate: "2024-02-12",
+//     department: "cs",
+//     experience: "2",
+//   },
+//   {
+//     id: "4DTnkbHutg7uaIqj-NuHO",
+//     fullName: "a",
+//     birthdate: "2024-02-05",
+//     department: "dc",
+//     experience: "2",
+//   },
+//   {
+//     id: "GnNG85lil9ls1jUxcF4CH",
+//     fullName: "b",
+//     birthdate: "2024-02-06",
+//     department: "df",
+//     experience: "2",
+//   },
+//   {
+//     id: "KzAL7YWxHiFRb_9f_pXIC",
+//     fullName: "d",
+//     birthdate: "2024-02-20",
+//     department: "we",
+//     experience: "2",
+//   },
+//   {
+//     id: "sW0txx_T1K4Irthyp6Xxy",
+//     fullName: "df",
+//     birthdate: "2024-02-13",
+//     department: "ty",
+//     experience: "6",
+//   },
+//   {
+//     id: "BpS0AwTcWYN8SlJbKRXJb",
+//     fullName: "cv",
+//     birthdate: "2024-02-15",
+//     department: "df",
+//     experience: "3",
+//   },
+//   {
+//     id: "BpS0AwTcWYN8SlJbKRXJb",
+//     fullName: "cv",
+//     birthdate: "2024-02-15",
+//     department: "df",
+//     experience: "3",
+//   },
+//   {
+//     id: "BpS0AwTcWYN8SlJbKRXJb",
+//     fullName: "cv",
+//     birthdate: "2024-02-15",
+//     department: "df",
+//     experience: "3",
+//   },
+//   {
+//     id: "BpS0AwTcWYN8SlJbKRXJb",
+//     fullName: "cv",
+//     birthdate: "2024-02-15",
+//     department: "df",
+//     experience: "3",
+//   },
+//   {
+//     id: "BpS0AwTcWYN8SlJbKRXJb",
+//     fullName: "cv",
+//     birthdate: "2024-02-15",
+//     department: "df",
+//     experience: "3",
+//   },
+//   {
+//     id: "BpS0AwTcWYN8SlJbKRXJb",
+//     fullName: "cv",
+//     birthdate: "2024-02-15",
+//     department: "df",
+//     experience: "3",
+//   },
+//   {
+//     id: "BpS0AwTcWYN8SlJbKRXJb",
+//     fullName: "cv",
+//     birthdate: "2024-02-15",
+//     department: "df",
+//     experience: "3",
+//   },
+//   {
+//     id: "BpS0AwTcWYN8SlJbKRXJb",
+//     fullName: "cv",
+//     birthdate: "2024-02-15",
+//     department: "df",
+//     experience: "3",
+//   },
+//   {
+//     id: "BpS0AwTcWYN8SlJbKRXJb",
+//     fullName: "cv",
+//     birthdate: "2024-02-15",
+//     department: "df",
+//     experience: "3",
+//   },
+//   {
+//     id: "BpS0AwTcWYN8SlJbKRXJb",
+//     fullName: "cv",
+//     birthdate: "2024-02-15",
+//     department: "df",
+//     experience: "3",
+//   },
+// ]
+
 const employeeSlice = createSlice({
   name: "record",
   initialState,
@@ -146,8 +254,20 @@ const employeeSlice = createSlice({
       state.records = updatedRecords;
       console.log(updatedRecords);
     },
+    deleteEmployee: (state, action) => {
+      console.log("delete emp", action.payload);
+      const { employeeId: id } = action.payload;
+      const updatedRecords = state.records.filter((employee) => {
+        console.log(employee.id, employee.id !== id, id);
+        return employee.id !== id;
+      });
+      console.log(updatedRecords);
+      state.records = updatedRecords;
+    },
   },
 });
 
-export const { addEmployee, updateEmployee } = employeeSlice.actions;
+export const { addEmployee, updateEmployee, deleteEmployee } =
+  employeeSlice.actions;
+
 export default employeeSlice.reducer;

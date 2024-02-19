@@ -14,8 +14,8 @@ const EmployeeForm = () => {
   const [showModal, setShowModal] = useState(false);
   const { id: employeeId } = useParams();
   const records = useSelector((state) => state.records);
-
   const dispatch = useDispatch();
+
   const resetInputFields = () => {
     setFullName("");
     setBirthdate("");

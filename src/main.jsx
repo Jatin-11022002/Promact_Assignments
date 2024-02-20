@@ -7,6 +7,7 @@ import EmployeeForm from "./components/EmployeeForm";
 import ListOfEmployees from "./components/ListOfEmployees";
 import Layout from "./Layout";
 import "./index.css";
+import Toast from "./components/Toast";
 
 const App = () => {
   return (

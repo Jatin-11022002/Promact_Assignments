@@ -36,7 +36,7 @@ function Sidebar() {
             }}
           >
             <span className="sidebar-menu-icon">📃</span>
-            <span className="sidebar-menu-text">List of Employees</span>
+            <span className="sidebar-menu-text">All Employees</span>
           </NavLink>
         </li>
       </ul>

@@ -3,23 +3,28 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "../styling/listofemployees.css";
 import { deleteEmployee } from "../store/employeeSlice";
-import Modal from "./Modal";
+import Toast from "./Toast";
+import { ToastContainer, toast } from "react-toastify";
 
 const ListOfEmployees = () => {
   let records = useSelector((state) => state.records);
-  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
   return (
     <div className="records-container">
       {records.length > 0 ? (
         <>
-          {showModal && (
-            <Modal
-              message={"Record Deleted Successfully"}
-              closeModal={() => setShowModal(false)}
-            />
-          )}
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
           <h2 className="page-heading">Employee Records</h2>
           <div className="table-wrapper">
             <table className="records-table">
@@ -46,7 +51,7 @@ const ListOfEmployees = () => {
                       <i
                         className="fas fa-trash-alt action-icon"
                         onClick={() => {
-                          setShowModal(true);
+                          toast.success("Record Deleted Successfully");
                           dispatch(deleteEmployee({ employeeId: employee.id }));
                         }}
                       ></i>

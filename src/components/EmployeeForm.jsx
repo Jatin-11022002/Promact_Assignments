@@ -5,16 +5,22 @@ import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import "../styling/employeeForm.css";
 import Modal from "./Modal";
+import Toast from "./Toast";
+import { ToastContainer, toast } from "react-toastify";
 
 const EmployeeForm = () => {
   const [fullName, setFullName] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [department, setDepartment] = useState("");
   const [experience, setExperience] = useState("");
-  const [showModal, setShowModal] = useState(false);
+
   const { id: employeeId } = useParams();
   const records = useSelector((state) => state.records);
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   setShowModal({ show: false, success: true, message: "" });
+  // }, [showModal.show]);
 
   const resetInputFields = () => {
     setFullName("");
@@ -33,11 +39,35 @@ const EmployeeForm = () => {
     setExperience(value);
   }, []);
 
+  const checkForValidInputs = () => {
+    console.log("in valid inputs");
+    if (!fullName.trim()) {
+      return "Please Enter Valid FullName";
+    } else if (!birthdate) {
+      return "Please Enter Valid BirthDate";
+    } else if (!department.trim()) {
+      return "Please Enter Valid Department";
+    } else if (!experience) {
+      return "Please Enter Valid Experience";
+    }
+
+    return "";
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const message = checkForValidInputs();
+    if (message !== "") {
+      console.log(message);
+      toast.error(message);
+      return;
+    }
+
     if (!employeeId) {
       dispatch(addEmployee({ fullName, birthdate, department, experience }));
       resetInputFields();
+
+      toast.success("Record Added Successfully");
     } else {
       dispatch(
         updateEmployee({
@@ -48,8 +78,8 @@ const EmployeeForm = () => {
           experience,
         })
       );
+      toast.success("Record Updated Successfully");
     }
-    setShowModal(true);
   };
 
   //For prefilling data in case of Editing record
@@ -69,23 +99,24 @@ const EmployeeForm = () => {
 
   return (
     <div className="form-container">
-      {showModal && (
-        <Modal
-          message={
-            employeeId
-              ? "Record Updated Successfully"
-              : "Record Added Successfully"
-          }
-          closeModal={() => setShowModal(false)}
-        />
-      )}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <h1 className="form-heading">
         {employeeId ? "Edit Employee" : "Add Employee"}
       </h1>
-      <form onSubmit={handleSubmit}>
+      <div onSubmit={handleSubmit} className="form">
         <div className="form-group">
           <label htmlFor="fullName" className="form-label">
-            Full Name:
+            Full Name
           </label>
           <input
             type="text"
@@ -93,12 +124,11 @@ const EmployeeForm = () => {
             value={fullName}
             onChange={handleFullNameChange}
             className="form-input"
-            required
           />
         </div>
         <div className="form-group">
           <label htmlFor="birthdate" className="form-label">
-            Birthdate:
+            Birthdate
           </label>
           <input
             type="date"
@@ -107,12 +137,11 @@ const EmployeeForm = () => {
             onChange={(e) => setBirthdate(e.target.value)}
             className="form-input"
             max={new Date().toISOString().split("T")[0]}
-            required
           />
         </div>
         <div className="form-group">
           <label htmlFor="department" className="form-label">
-            Department:
+            Department
           </label>
           <input
             type="text"
@@ -120,12 +149,12 @@ const EmployeeForm = () => {
             value={department}
             onChange={(e) => setDepartment(e.target.value)}
             className="form-input"
-            required
+            onInvalid={() => toast.error("date")}
           />
         </div>
         <div className="form-group">
           <label htmlFor="experience" className="form-label">
-            Experience (in years):
+            Experience (in years)
           </label>
           <input
             type="text"
@@ -133,13 +162,12 @@ const EmployeeForm = () => {
             value={experience}
             onChange={handleExperienceChange}
             className="form-input"
-            required
           />
         </div>
-        <button type="submit" className="form-submit">
-          {employeeId ? "Save Changes" : "Insert Record"}
+        <button type="submit" className="form-submit" onClick={handleSubmit}>
+          {employeeId ? "Save Changes" : "Add"}
         </button>
-      </form>
+      </div>
     </div>
   );
 };

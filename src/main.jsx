@@ -8,6 +8,7 @@ import ListOfEmployees from "./components/ListOfEmployees";
 import Layout from "./Layout";
 import "./index.css";
 import Toast from "./components/Toast";
+import PageNotFound from "./components/PageNotFound.jsx";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/add" element={<Layout component={EmployeeForm} />} />
         <Route path="/edit/:id" element={<Layout component={EmployeeForm} />} />
         <Route path="/list" element={<Layout component={ListOfEmployees} />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );

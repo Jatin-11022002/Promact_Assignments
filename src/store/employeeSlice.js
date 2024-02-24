@@ -1,242 +1,34 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
+// Initial state for the employee records slice
 const initialState = {
-  records: [
-    {
-      id: "fjhE22qbzjXvGkdLQWHCS",
-      fullName: "raj",
-      birthdate: "2024-02-12",
-      department: "cs",
-      experience: "2",
-    },
-    {
-      id: "4DTnkbHutg7uaIqj-NuHO",
-      fullName: "a",
-      birthdate: "2024-02-05",
-      department: "dc",
-      experience: "2",
-    },
-    {
-      id: "GnNG85lil9ls1jUxcF4CH",
-      fullName: "b",
-      birthdate: "2024-02-06",
-      department: "df",
-      experience: "2",
-    },
-    {
-      id: "KzAL7YWxHiFRb_9f_pXIC",
-      fullName: "d",
-      birthdate: "2024-02-20",
-      department: "we",
-      experience: "2",
-    },
-    {
-      id: "sW0txx_T1K4Irthyp6Xxy",
-      fullName: "df",
-      birthdate: "2024-02-13",
-      department: "ty",
-      experience: "6",
-    },
-    {
-      id: "BpS0AwTcWYN8SlJbKRXJb",
-      fullName: "cv",
-      birthdate: "2024-02-15",
-      department: "df",
-      experience: "3",
-    },
-    {
-      id: "BpS0AwTcWYN8SlJbKRXJb",
-      fullName: "cv",
-      birthdate: "2024-02-15",
-      department: "df",
-      experience: "3",
-    },
-    {
-      id: "BpS0AwTcWYN8SlJbKRXJb",
-      fullName: "cv",
-      birthdate: "2024-02-15",
-      department: "df",
-      experience: "3",
-    },
-    {
-      id: "BpS0AwTcWYN8SlJbKRXJb",
-      fullName: "cv",
-      birthdate: "2024-02-15",
-      department: "df",
-      experience: "3",
-    },
-    {
-      id: "BpS0AwTcWYN8SlJbKRXJb",
-      fullName: "cv",
-      birthdate: "2024-02-15",
-      department: "df",
-      experience: "3",
-    },
-    {
-      id: "BpS0AwTcWYN8SlJbKRXJb",
-      fullName: "cv",
-      birthdate: "2024-02-15",
-      department: "df",
-      experience: "3",
-    },
-    {
-      id: "BpS0AwTcWYN8SlJbKRXJb",
-      fullName: "cv",
-      birthdate: "2024-02-15",
-      department: "df",
-      experience: "3",
-    },
-    {
-      id: "BpS0AwTcWYN8SlJbKRXJb",
-      fullName: "cv",
-      birthdate: "2024-02-15",
-      department: "df",
-      experience: "3",
-    },
-    {
-      id: "BpS0AwTcWYN8SlJbKRXJb",
-      fullName: "cv",
-      birthdate: "2024-02-15",
-      department: "df",
-      experience: "3",
-    },
-    {
-      id: "BpS0AwTcWYN8SlJbKRXJb",
-      fullName: "cv",
-      birthdate: "2024-02-15",
-      department: "df",
-      experience: "3",
-    },
-  ],
+  records: [],
 };
 
-// arr=[
-//   {
-//     id: "fjhE22qbzjXvGkdLQWHCS",
-//     fullName: "raj",
-//     birthdate: "2024-02-12",
-//     department: "cs",
-//     experience: "2",
-//   },
-//   {
-//     id: "4DTnkbHutg7uaIqj-NuHO",
-//     fullName: "a",
-//     birthdate: "2024-02-05",
-//     department: "dc",
-//     experience: "2",
-//   },
-//   {
-//     id: "GnNG85lil9ls1jUxcF4CH",
-//     fullName: "b",
-//     birthdate: "2024-02-06",
-//     department: "df",
-//     experience: "2",
-//   },
-//   {
-//     id: "KzAL7YWxHiFRb_9f_pXIC",
-//     fullName: "d",
-//     birthdate: "2024-02-20",
-//     department: "we",
-//     experience: "2",
-//   },
-//   {
-//     id: "sW0txx_T1K4Irthyp6Xxy",
-//     fullName: "df",
-//     birthdate: "2024-02-13",
-//     department: "ty",
-//     experience: "6",
-//   },
-//   {
-//     id: "BpS0AwTcWYN8SlJbKRXJb",
-//     fullName: "cv",
-//     birthdate: "2024-02-15",
-//     department: "df",
-//     experience: "3",
-//   },
-//   {
-//     id: "BpS0AwTcWYN8SlJbKRXJb",
-//     fullName: "cv",
-//     birthdate: "2024-02-15",
-//     department: "df",
-//     experience: "3",
-//   },
-//   {
-//     id: "BpS0AwTcWYN8SlJbKRXJb",
-//     fullName: "cv",
-//     birthdate: "2024-02-15",
-//     department: "df",
-//     experience: "3",
-//   },
-//   {
-//     id: "BpS0AwTcWYN8SlJbKRXJb",
-//     fullName: "cv",
-//     birthdate: "2024-02-15",
-//     department: "df",
-//     experience: "3",
-//   },
-//   {
-//     id: "BpS0AwTcWYN8SlJbKRXJb",
-//     fullName: "cv",
-//     birthdate: "2024-02-15",
-//     department: "df",
-//     experience: "3",
-//   },
-//   {
-//     id: "BpS0AwTcWYN8SlJbKRXJb",
-//     fullName: "cv",
-//     birthdate: "2024-02-15",
-//     department: "df",
-//     experience: "3",
-//   },
-//   {
-//     id: "BpS0AwTcWYN8SlJbKRXJb",
-//     fullName: "cv",
-//     birthdate: "2024-02-15",
-//     department: "df",
-//     experience: "3",
-//   },
-//   {
-//     id: "BpS0AwTcWYN8SlJbKRXJb",
-//     fullName: "cv",
-//     birthdate: "2024-02-15",
-//     department: "df",
-//     experience: "3",
-//   },
-//   {
-//     id: "BpS0AwTcWYN8SlJbKRXJb",
-//     fullName: "cv",
-//     birthdate: "2024-02-15",
-//     department: "df",
-//     experience: "3",
-//   },
-//   {
-//     id: "BpS0AwTcWYN8SlJbKRXJb",
-//     fullName: "cv",
-//     birthdate: "2024-02-15",
-//     department: "df",
-//     experience: "3",
-//   },
-// ]
-
+// Redux slice for managing employee records
 const employeeSlice = createSlice({
-  name: "record",
-  initialState,
+  name: "record", // Slice name
+  initialState, // Initial state
   reducers: {
+    // Reducer function for adding a new employee record
     addEmployee: (state, action) => {
+      // Extracting payload data
       const { fullName, birthdate, department, experience } = action.payload;
+      // Creating a new employee record object
       const employeeRecord = {
-        id: nanoid(),
+        id: nanoid(), // Generating a unique ID
         fullName,
         birthdate,
         department,
         experience,
       };
+      // Adding the new record to the state
       state.records.push(employeeRecord);
-      console.log(state.records, "addemp");
     },
 
+    // Reducer function for updating an existing employee record
     updateEmployee: (state, action) => {
-      console.log("updateemp");
+      // Extracting payload data
       const {
         employeeId: id,
         fullName,
@@ -244,30 +36,27 @@ const employeeSlice = createSlice({
         department,
         experience,
       } = action.payload;
-      const updatedRecords = state.records.map((employee) => {
-        if (employee.id === id) {
-          return { ...employee, fullName, birthdate, department, experience };
-        } else {
-          return employee;
-        }
-      });
-      state.records = updatedRecords;
-      console.log(updatedRecords);
+      // Updating the records array with the updated employee record
+      state.records = state.records.map((employee) =>
+        employee.id === id
+          ? { ...employee, fullName, birthdate, department, experience }
+          : employee
+      );
     },
+
+    // Reducer function for deleting an employee record
     deleteEmployee: (state, action) => {
-      console.log("delete emp", action.payload);
+      // Extracting payload data
       const { employeeId: id } = action.payload;
-      const updatedRecords = state.records.filter((employee) => {
-        console.log(employee.id, employee.id !== id, id);
-        return employee.id !== id;
-      });
-      console.log(updatedRecords);
-      state.records = updatedRecords;
+      // Filtering out the deleted employee record
+      state.records = state.records.filter((employee) => employee.id !== id);
     },
   },
 });
 
+// Exporting action creators
 export const { addEmployee, updateEmployee, deleteEmployee } =
   employeeSlice.actions;
 
+// Exporting the reducer function
 export default employeeSlice.reducer;

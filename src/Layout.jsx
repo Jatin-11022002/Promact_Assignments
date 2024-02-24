@@ -1,12 +1,15 @@
 import React from "react";
-import Sidebar from "./components/Sidebar";
-import "./styling/layout.css";
+import Sidebar from "./components/Sidebar"; // Importing the Sidebar component
+import "./styling/layout.css"; // Importing the CSS file for layout styling
 
 function Layout({ component: Component }) {
   return (
     <div className="layout">
+      {/* Sidebar Component */}
       <Sidebar />
+      {/* Main Content Section */}
       <div className="main-content">
+        {/* Rendering the Component if it's provided, otherwise displaying a placeholder */}
         {Component ? (
           <Component />
         ) : (
